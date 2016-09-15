@@ -1,0 +1,22 @@
+
+{
+	"galleryCatName":"AI",
+	"title": "Alaska Ice",
+	"images": [
+		{"index":1, "title":"Knik Bergie 1"},
+		{"index":2,"title":"Knik Bergie 2"},
+		{"index":3,"title":"Knik Bergie 3"},
+		{"index":4,"title":"Knik Bergie 4"},
+		{"index":5,"title":"Knik Bergie 5"},
+		{"index":6,"title":"Knik Bergie 6"},
+		{"index":7,"title":"Knik Bergie 7"},
+		{"index":8,"title":"Knik Bergie 8"},
+		{"index":9,"title":"Knik Bergie 9"},
+		{"index":10,"title":"Knik Bergie 10"},
+		{"index":11,"title":"Knik Bergie 11"},
+		{"index":12,"title":"Knik Bergie 12"},
+		{"index":13,"title":"Knik Bergie 13"},
+		{"index":14,"title":"Knik Bergie 14"},
+		{"index":15,"title":"Knik Bergie 15"}
+		]
+}

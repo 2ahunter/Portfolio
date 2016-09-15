@@ -1,0 +1,118 @@
+body {
+	font-size: 14px;
+	color: #000;
+	background-color: #ffffff;
+	font-family: 'Lato', sans-serif;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+header {
+	background-color: #ffffff;
+
+}
+
+header h1 {
+	color: #000;
+	font-size: 26px;
+	letter-spacing: 0.06em;
+	margin-top: 30px;
+}
+
+header a:hover, header a:focus {
+  text-decoration: none;
+}
+/* attempt at masonry */
+.masonry-item {
+	width:  50px;
+    height: 50px;
+    float: left;
+    background: #fff;
+    border: 2px solid #fff; 
+}
+
+.masonry-item.portrait {
+	width:  14.8%;
+    height: auto;
+}
+
+.masonry-item.landscape {
+	width:  33%;
+    height: auto;
+}
+
+
+
+.thumbnail {
+  display: block;
+  padding-bottom: 100%;
+  position: relative;
+}
+.thumbnail > .img-responsive {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#main-content{
+	background-color: #fff;
+}
+
+
+#home-image{
+	background-color: #fff;
+	width: 90%
+	margin-left: auto;
+}
+
+#gallery-image {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+/** HEADER **/
+#header-nav {
+	background-color: #ffffff;
+	border-radius: 0;
+	border: 0;
+	margin-bottom: 0px;
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+.carousel .carousel-control {
+  visibility: hidden;
+}
+.carousel:hover .carousel-control {
+  visibility: visible;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-item {
+  float: left;
+  border: 2px solid hsla(0, 0%, 0%, 0);
+  width: 33%;
+}
+.grid-item img {
+	display: block;
+	width: 100%;
+}
+
+

@@ -1,0 +1,13 @@
+
+{
+	"galleryCatName":"AL",
+	"title": "Alaska Landscapes",
+	"images": [
+		{"index":1, "title":"Knik Landscape 1"},
+		{"index":2,"title":"Knik Landscape 2"},
+		{"index":3,"title":"Knik Landscape 3"},
+		{"index":4,"title":"Knik Landscape 4"},
+		{"index":5,"title":"Knik Landscape 5"},
+		{"index":6,"title":"Knik Landscape 6"}
+		]
+}
