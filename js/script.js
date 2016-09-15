@@ -77,7 +77,8 @@ ah.loadGalleries = function () {
 
 ah.loadGallery = function(gallery){
 	showLoading("#main-content");
-	url = galleryUrl + gallery + ".json";
+	// url = galleryUrl + gallery + ".json";
+	url = insertProperty(galleryUrl,"gallery", gallery);
 	$ajaxUtils.sendGetRequest(
 		url,
 		buildAndShowGalleryHTML);
@@ -87,9 +88,9 @@ ah.loadGridGallery = function(gallery){
 	showLoading("#main-content");
 	url = insertProperty(galleryUrl,"gallery", gallery);
 	console.log(url);
-	// $ajaxUtils.sendGetRequest(
-	// 	url,
-	// 	buildAndShowGridHTML);
+	$ajaxUtils.sendGetRequest(
+		url,
+		buildAndShowGridHTML);
 }
 
 ah.loadGrid = function () {
@@ -122,8 +123,9 @@ function buildAndShowGalleriesHTML(galleries){
 }
 
 function buildAndShowGridHTML(gallery){
+	var html = insertProperty(gridHtml,"title",gallery.title);
 	$ajaxUtils.sendGetRequest(
-		gridHtml,
+		html,
 		function(galleryTitleHtml){
 			$ajaxUtils.sendGetRequest(
 				gridItemHtml,
