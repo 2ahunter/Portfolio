@@ -14,7 +14,9 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 var ah = {};
 //for the masonry example
 // var gridHtml = "snippets/grid.html";
+var carouselHtml = "snippets/carousel.html"
 var gridHtml = "snippets/gridGallery.html";
+var gridItemHtml = "snippets/grid-image.html"
 
 var homeHtml = "snippets/home-snippet.html";
 var galleriesTitleHtml = "snippets/galleries-title.html";
@@ -22,6 +24,7 @@ var galleryTitleHtml = "snippets/gallery-title.html";
 
 var galleriesImageHtml = "snippets/galleries-image.html";
 var galleryImageHtml = "snippets/image-snippet.html";
+
 
 var galleriesHomeHtml = "snippets/galleries-home.html";
 var galleriesUrl="data/galleries.json";
@@ -62,11 +65,6 @@ $ajaxUtils.sendGetRequest(
   false);
 });
 
-ah.loadImage = function(url){
-	var height = this.height;
-	var width = this.width;
-	console.log(url);
-}
 
 ah.loadGalleries = function () {
 	showLoading("#main-content");
@@ -96,9 +94,9 @@ ah.loadGridGallery = function(gallery){
 ah.loadGrid = function () {
 	showLoading("#main-content");
 	$ajaxUtils.sendGetRequest(
-		gridHtml,
-		function(gridHtml){
-			insertHtml("#main-content", gridHtml);
+		carouselHtml,
+		function(carouselHtml){
+			insertHtml("#main-content", carouselHtml);
 		}, false);
 }
 
@@ -122,25 +120,6 @@ function buildAndShowGalleriesHTML(galleries){
 		false);
 }
 
-function buildAndShowGridHTML(gallery){
-	var html = insertProperty(gridHtml,"title",gallery.title);
-	$ajaxUtils.sendGetRequest(
-		html,
-		function(galleryTitleHtml){
-			$ajaxUtils.sendGetRequest(
-				gridItemHtml,
-				function(galleryImageHtml){
-					var galleryViewHtml = 
-						buildGalleryViewHtml(
-							gallery, 
-							galleryTitleHtml, 
-							galleryImageHtml);
-					insertHtml("#main-content", galleryViewHtml);
-				},
-				false);
-		},
-		false);
-}
 function buildAndShowGalleryHTML(gallery){
 	$ajaxUtils.sendGetRequest(
 		galleryTitleHtml,
@@ -186,27 +165,48 @@ function buildGalleriesViewHtml(galleries,
 function buildGalleryViewHtml(gallery, 
 							galleryTitleHtml, 
 							galleryImageHtml){
+	var landscapeRowClass = "col-md-4 col-sm-6 col-xs-12";
+	var portraitRowClass = "col-md-3 col-sm-4 col-xs-12";
 	var galleryTitle = "" + gallery.title;
 	var finalHtml = insertProperty(galleryTitleHtml, "title", galleryTitle);
 
-	// finalHtml+= "<section class='row'>";
-	finalHtml+= '<div id="grid" data-columns>'
+	finalHtml+= "<section class='row'>";
+	var oldOrientation = gallery.images[0].orientation;
 	// Loop over galleries
 		for (var i = 0; i < gallery.images.length; i++) {
+			var html = "";
+			var rowClass;
+			var newOrientation = gallery.images[i].orientation;
+			//add a clearfix if the orientation has changed
+			if (gallery.images[i].orientation != oldOrientation) {
+		  		html +=
+        		"<div class='clearfix visible-lg-block visible-md-block visible-sm-block'></div>";
+    		}
+
+    		html += galleryImageHtml;
+			if (newOrientation == "landscape") {
+    			rowClass = landscapeRowClass;
+    		} else {
+    			rowClass = portraitRowClass;
+    		}
+    		console.log(rowClass);
+
 		  	// Insert gallery values
-			var html = galleryImageHtml;
 			var title = "" + gallery.images[i].title;
 			var index = "" + gallery.images[i].index;
 			var galleryCatName = "" + gallery.galleryCatName;
+			html = insertProperty(html, "orientation", newOrientation);
+			html = insertProperty(html, "class", rowClass);
+			console.log(html);
 			html = insertProperty(html, "title", title);
 			html = insertProperty(html, "galleryCatName", galleryCatName);
 			html = insertProperty(html, "index", index);
 			
 			finalHtml += html;
+			oldOrientation = newOrientation;
 		}
 		finalHtml += "</div>";
 		return finalHtml;
-
 }
 
 global.$ah = ah;
